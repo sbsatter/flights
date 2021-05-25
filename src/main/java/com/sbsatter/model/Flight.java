@@ -2,9 +2,11 @@ package com.sbsatter.model;
 
 import java.time.LocalDateTime;
 
-public class Flight {
+public class Flight implements Comparable<Flight> {
     private String source;
     private String destination;
+    private Airport sourceAirport;
+    private Airport destinationAirport;
     private LocalDateTime departure;
     private LocalDateTime arrival;
     private String flightNumber;
@@ -26,6 +28,22 @@ public class Flight {
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public Airport getSourceAirport() {
+        return sourceAirport;
+    }
+
+    public void setSourceAirport(Airport sourceAirport) {
+        this.sourceAirport = sourceAirport;
+    }
+
+    public Airport getDestinationAirport() {
+        return destinationAirport;
+    }
+
+    public void setDestinationAirport(Airport destinationAirport) {
+        this.destinationAirport = destinationAirport;
     }
 
     public LocalDateTime getDeparture() {
@@ -78,15 +96,25 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "source='" + source + '\'' +
-                ", destination='" + destination + '\'' +
-                ", departure=" + departure +
-                ", arrival=" + arrival +
-                ", flightNumber='" + flightNumber + '\'' +
-                ", price=" + price +
-                ", bagsAllowed=" + bagsAllowed +
-                ", bagPrice=" + bagPrice +
-                '}';
+        return String.format("%s => %s (%s)", source, destination, flightNumber);
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Flight{" +
+//                "source='" + source + '\'' +
+//                ", destination='" + destination + '\'' +
+//                ", departure=" + departure +
+//                ", arrival=" + arrival +
+//                ", flightNumber='" + flightNumber + '\'' +
+//                ", price=" + price +
+//                ", bagsAllowed=" + bagsAllowed +
+//                ", bagPrice=" + bagPrice +
+//                '}';
+//    }
+
+    @Override
+    public int compareTo(Flight other) {
+        return this.departure.compareTo(other.getDeparture());
     }
 }
