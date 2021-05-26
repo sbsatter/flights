@@ -11,13 +11,13 @@ public class GraphImpl implements Graph {
 
     private Map<String, Airport> graph;
 
+    // empty graph to hold airports data
+    public GraphImpl() {
+        graph = new HashMap<>();
+    }
+
     @Override
     public void init(List<Flight> flights) {
-        if (graph == null) {
-            graph = new HashMap<>();
-        } else {
-            throw new UnsupportedOperationException("Graph has already been initialized");
-        }
         flights.forEach(flight -> graph.computeIfAbsent(flight.getSource(), this::initAirport).addOutgoingFlight(flight));
         flights.forEach(flight -> graph.computeIfAbsent(flight.getDestination(), this::initAirport).addIncomingFlight(flight));
         flights.forEach(flight -> {
@@ -64,16 +64,17 @@ public class GraphImpl implements Graph {
 
     @Override
     public void addIncomingFlightTo(String airport, Flight incomingFlight) {
-
+        // todo not implemented
     }
 
     @Override
     public void addOutgoingFlightTo(String airport, Flight outgoingFlight) {
-
+        // todo not implemented
     }
 
     @Override
     public Airport getAirportByName(String airport) {
+        // todo not implemented
         return null;
     }
 }

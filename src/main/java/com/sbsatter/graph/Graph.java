@@ -10,6 +10,10 @@ import java.util.Set;
 
 public interface Graph {
 
+    /**
+     * Initialize graph on flights
+     * @param flights
+     */
     void init(List<Flight> flights);
 
     Airport initAirport(String name);
